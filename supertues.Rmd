@@ -1,0 +1,68 @@
+---
+title: "supertues"
+author: '@tomstafford'
+date: "4 March 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggrepel)
+```
+
+## Bang for your buck? Candidate Ad in the Democractic primary correlated with votes and delegates
+
+Taking total ad spend by 4th of March 2020, as reported by [CNN](https://edition.cnn.com/2020/03/02/politics/super-tuesday-ad-spending/index.html), and the number of delegates and votes, as reported by [Wikipedia as of 0820 UK time](https://en.wikipedia.org/wiki/Results_of_the_2020_Democratic_Party_presidential_primaries#Super_Tuesday), we can look and see how directly ad spending correlates with voter preferences.
+
+
+```{r data, echo=FALSE,warning=FALSE}
+
+df =read.csv('supertuesday.csv')
+df$delegates <- as.numeric(as.character(df$delegates))
+df$votes  <- as.numeric(as.character(df$votes))
+
+print(df)
+```
+
+## Spend v Delegates
+
+```{r v_delegates, echo=FALSE,warning=FALSE,message=FALSE}
+
+p <- ggplot(data = df, mapping = aes(x = spend, y=delegates,label = candidates))
+p + geom_point(color='red',size=4) +
+  labs(x = "Total ad spend ($million)", y = "delegates won by SuperTuesday") + 
+  geom_text_repel()
+  xlim(0,750)
+
+ggsave('delegates.png')    
+  
+
+```
+
+Safe to conclude there is no strong relationship
+
+## Spend v Votes
+
+
+```{r v_votes, echo=FALSE,warning=FALSE,message=FALSE}
+
+p <- ggplot(data = df, mapping = aes(x = spend, y=votes, label=candidates))
+p + geom_point(color='blue',size=4) +
+  labs(x = "Total ad spend ($million)", y = "votes won by SuperTuesday") +
+  geom_text_repel()
+  
+ggsave('votes.png')  
+
+```
+
+Again, it is safe to conclude there is no strong relationship
+
+## Colophon
+
+Normally I'd do this with Python, but I was inspired by Kieran Healy's book to use R. It's a great book:
+
+Healy, K. (2018). [Data visualization: a practical introduction](https://socviz.co/). Princeton University Press.
+
+
+
