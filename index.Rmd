@@ -30,7 +30,7 @@ print(df)
 ```{r v_delegates, echo=FALSE,warning=FALSE,message=FALSE}
 
 p <- ggplot(data = df, mapping = aes(x = spend, y=delegates,label = candidates))
-p + geom_point(color='red',size=4) +
+p + geom_point(color='red',size=3) +
   labs(x = "Total ad spend ($million)", y = "delegates won by SuperTuesday") + 
   geom_text_repel()
   xlim(0,750)
@@ -47,10 +47,13 @@ Safe to conclude there is no strong relationship
 
 ```{r v_votes, echo=FALSE,warning=FALSE,message=FALSE}
 
+
 p <- ggplot(data = df, mapping = aes(x = spend, y=votes, label=candidates))
-p + geom_point(color='blue',size=4) +
+p + geom_point(color='blue',size=3) +
   labs(x = "Total ad spend ($million)", y = "votes won by SuperTuesday") +
-  geom_text_repel()
+  geom_text_repel() +
+  scale_y_continuous(labels = scales::comma)
+
   
 ggsave('votes.png')  
 
@@ -62,7 +65,9 @@ Again, it is safe to conclude there is no strong relationship
 
 Normally I'd do this with Python, but I was inspired by Kieran Healy's book to use R. It's a great book:
 
-Healy, K. (2018). [Data visualization: a practical introduction](https://socviz.co/). Princeton University Press.
+* Healy, K. (2018). [Data visualization: a practical introduction](https://socviz.co/). Princeton University Press.
+
+* This page was useful in publishing to github [How to publish project online?](https://rpubs.com/cathydatascience/518692) by Cathy Gao, August 7, 2019. Thanks Cathy!
 
 
 
