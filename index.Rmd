@@ -84,6 +84,24 @@ ggsave('pervote.png')
 
 ```
 
+## Discussion
+
+Enjoy discussion of this analysis around the twitter [thread here](https://twitter.com/tomstafford/status/1235136079226966016)
+
+Caveat #1: Results are still coming in, so the actual figures will change (although the general pattern is likely to hold).
+
+Caveat #2: [Apparently Bloomberg's ads were terrible](https://twitter.com/broonstunes/status/1235209867079626753) so better ads might have had an effect.
+
+Caveat #3: Also, primary voters are almost by defintion high engagement, [so this doesn't test the case of influencing decisions from low-engagement voters](https://twitter.com/broonstunes/status/1235209867079626753)
+
+Caveat #4: [Maybe we should think of Bloomberg's spend as a hedge against the collapse of the Biden campaign](https://twitter.com/PavelDAtanasov/status/1235224962920828929)
+
+Caveat #5: Maybe Bloomberg was buying something other than votes (e.g. press)
+
+Caveat #6: [Maybe it was effective, since he overtook Biden in the polls at one point (from a lower base)](https://twitter.com/mathewe/status/1235168728062529536)
+
+Caveat #7: Bloomberg's campaign stalled after disappointing debate performance, ["there's only so much advertising can do with a bad product"](https://twitter.com/mathewe/status/1235168728062529536)
+
 ## Colophon
 
 Normally I'd do this with Python, but I was inspired by Kieran Healy's book to use R. It's a great book:
