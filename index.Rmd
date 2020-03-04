@@ -61,6 +61,27 @@ ggsave('votes.png')
 
 Again, it is safe to conclude there is no strong relationship
 
+## Price for votes
+
+Let's work out how much each candidate payed per vote/delegate (note, this makes the very dubious assumption that with 0 ad spend they would get 0 votes/delegates)
+
+```{r price_per, echo=FALSE,warning=FALSE,message=FALSE}
+
+df <- df %>% mutate(per_delegate=(spend*1000000)/delegates,per_vote=(spend*1000000)/votes) %>% drop_na()
+
+print(df)
+
+p <- ggplot(data=df,
+            mapping=aes(x = per_vote,y=reorder(candidates,per_vote)))
+
+p + geom_point(size=3) +
+  labs(x= "Price per vote ($)",y="") +
+  scale_x_continuous(labels = scales::comma)
+
+ggsave('pervote.png')
+
+```
+
 ## Colophon
 
 Normally I'd do this with Python, but I was inspired by Kieran Healy's book to use R. It's a great book:
