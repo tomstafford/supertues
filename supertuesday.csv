@@ -1,10 +1,10 @@
-candidates,spend,delegates,votes
-Michael Bloomberg,560,4,47407
-Tom Steyer,210,0,77236
-Donald Trump,60,-,-
-Bernie Sanders,55,79,340448
-Pete Buttigieg,36,26,173466
-Elizabeth Warren,27,8,148495
-Amy Klobuchar,17,7,102406
-Joe Biden,16,135,442415
-Tulsi Gabbard,5.5,1,16480
+candidates,spend,delegates0820,votes0820,delegates1546,votes1546
+Michael Bloomberg,560,4,47407,64,1573388
+Tom Steyer,210,0,77236,0,194646
+Donald Trump,60,-,-,,
+Bernie Sanders,55,79,340448,395,3442670
+Pete Buttigieg,36,26,173466,26,594202
+Elizabeth Warren,27,8,148495,47,3442670
+Amy Klobuchar,17,7,102406,7,369504
+Joe Biden,16,135,442415,497,4365361
+Tulsi Gabbard,5.5,1,16480,2,92772

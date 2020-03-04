@@ -13,14 +13,16 @@ library(ggrepel)
 
 ## Bang for your buck? Candidate Ad spend in the Democractic primary correlated with votes and delegates
 
-Taking total ad spend by 4th of March 2020, as reported by [CNN](https://edition.cnn.com/2020/03/02/politics/super-tuesday-ad-spending/index.html), and the number of delegates and votes, as reported by [Wikipedia as of 0820 UK time](https://en.wikipedia.org/wiki/Results_of_the_2020_Democratic_Party_presidential_primaries#Super_Tuesday), we can look and see how directly ad spending correlates with voter preferences.
+Taking total ad spend by 4th of March 2020, as reported by [CNN](https://edition.cnn.com/2020/03/02/politics/super-tuesday-ad-spending/index.html), and the number of delegates and votes, as reported by [Wikipedia as of 1546 UK time,  on 4th of March 2020](https://en.wikipedia.org/wiki/Results_of_the_2020_Democratic_Party_presidential_primaries#Super_Tuesday), we can look and see how directly ad spending correlates with voter preferences.
 
 
 ```{r data, echo=FALSE,warning=FALSE}
 
 df =read.csv('supertuesday.csv')
-df$delegates <- as.numeric(as.character(df$delegates))
-df$votes  <- as.numeric(as.character(df$votes))
+df$delegates <- as.numeric(as.character(df$delegates1546))
+df$votes  <- as.numeric(as.character(df$votes1546))
+
+df <- df %>% select (-c(delegates0820,votes0820,delegates1546,votes1546))
 
 print(df)
 ```
