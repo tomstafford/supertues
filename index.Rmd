@@ -27,7 +27,7 @@ print(df)
 
 ## Spend v Delegates
 
-```{r v_delegates, echo=FALSE,warning=FALSE,message=FALSE}
+```{r v_delegates, echo=FALSE,warning=FALSE,message=FALSE,results=FALSE}
 
 p <- ggplot(data = df, mapping = aes(x = spend, y=delegates,label = candidates))
 p + geom_point(color='red',size=3) +
