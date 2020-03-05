@@ -13,7 +13,7 @@ library(ggrepel)
 
 ## Bang for your buck? Candidate Ad spend in the Democractic primary correlated with votes and delegates
 
-Taking total ad spend by 4th of March 2020, as reported by [CNN](https://edition.cnn.com/2020/03/02/politics/super-tuesday-ad-spending/index.html), and the number of delegates and votes, as reported by [Wikipedia as of 1546 UK time,  on 4th of March 2020](https://en.wikipedia.org/wiki/Results_of_the_2020_Democratic_Party_presidential_primaries#Super_Tuesday), we can look and see how directly ad spending correlates with voter preferences.
+Taking total ad spend by 4th of March 2020, as reported by [CNN](https://edition.cnn.com/2020/03/02/politics/super-tuesday-ad-spending/index.html), and the number of delegates and votes, as reported by [Wikipedia](https://en.wikipedia.org/wiki/Results_of_the_2020_Democratic_Party_presidential_primaries#Super_Tuesday) by the end of 4th of March - "Super Tuesday" - we can look and see how directly ad spending correlates with voter preferences.
 
 
 ```{r data, echo=FALSE,warning=FALSE}
@@ -88,7 +88,7 @@ ggsave('pervote.png')
 
 Enjoy discussion of this analysis around the twitter [thread here](https://twitter.com/tomstafford/status/1235136079226966016)
 
-Caveat #1: Results are still coming in, so the actual figures will change (although the general pattern is likely to hold).
+Caveat #1: Initial graphing done while results were still coming in, so the actual figures changed (but the general pattern held).
 
 Caveat #2: [Apparently Bloomberg's ads were terrible](https://twitter.com/broonstunes/status/1235209867079626753) so better ads might have had an effect.
 
