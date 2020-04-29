@@ -110,7 +110,7 @@ Normally I'd do this with Python, but I was inspired by Kieran Healy's book to u
 
 * This page was useful in publishing to github [How to publish project online?](https://rpubs.com/cathydatascience/518692) by Cathy Gao, August 7, 2019. Thanks Cathy!
 
-Repo for this analysis (the markdown file which generated this page, data and plot files) is here: [github.com/tomstafford/supertues](github.com/tomstafford/supertues)
+Repo for this analysis (the markdown file which generated this page, data and plot files) is here: [github.com/tomstafford/supertues](https://github.com/tomstafford/supertues)
 
 
 
