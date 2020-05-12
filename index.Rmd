@@ -1,35 +1,81 @@
 ---
 title: "supertues"
 author: '@tomstafford'
-date: "4 March 2020"
+date: "Original: 4 March 2020, revised: 12 May 2020"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse)
-library(ggrepel)
+# Note how this stuff isn't shown in page because i set include=FALSE
+
+#This line sets defaults (mostly saying "show the code but not the errors and text outputs)
+knitr::opts_chunk$set(echo = TRUE,fig.show="hold",warning=FALSE,results=FALSE,message=FALSE) 
+
+
+library(tidyverse) #this library for most graph and data functions
+library(ggrepel) #this library for the labels on the graphs with the lines to the points they represent
+
+## psy6422 headings
+#Data Origins
+#Research Questions
+#Data Preparation
+#Visualisation(s)
+#Summary 
+
+
+
 ```
 
 ## Bang for your buck? Candidate Ad spend in the Democractic primary correlated with votes and delegates
 
-Taking total ad spend by 4th of March 2020, as reported by [CNN](https://edition.cnn.com/2020/03/02/politics/super-tuesday-ad-spending/index.html), and the number of delegates and votes, as reported by [Wikipedia](https://en.wikipedia.org/wiki/Results_of_the_2020_Democratic_Party_presidential_primaries#Super_Tuesday) by the end of 4th of March - "Super Tuesday" - we can look and see how directly ad spending correlates with voter preferences.
+&nbsp;
+&nbsp;
+
+### Research Question
+
+The "Super Tuesday" of the Democratic Primary, sees a field of candidates with a wide range of advertising budgets, compete for votes across 16 US states on a single. It affords us the chance to ask: did the people who spent the most money on advertising get the most votes?
+
+&nbsp;
+&nbsp;
+
+### Data Origins
 
 
-```{r data, echo=FALSE,warning=FALSE}
+Total ad spend by 4th of March 2020, as reported by [CNN](https://edition.cnn.com/2020/03/02/politics/super-tuesday-ad-spending/index.html)
 
-df =read.csv('supertuesday.csv')
+The number of delegates and votes, as reported by [Wikipedia](https://en.wikipedia.org/wiki/Results_of_the_2020_Democratic_Party_presidential_primaries#Super_Tuesday) by the end of 4th of March - "Super Tuesday".
+
+I could have made this neater by pulling and merging these two data sets automatically, but instead I just copied and pasted them into a single spreadsheet.
+
+
+```{r data}
+
+df =read.csv('supertuesday.csv') # load data
+```
+
+&nbsp;
+&nbsp;
+
+### Data Preparation
+
+```{r data prep, results=TRUE}
+
+#tidying, changing type
 df$delegates <- as.numeric(as.character(df$delegates1546))
 df$votes  <- as.numeric(as.character(df$votes1546))
 
+#tidying, remove all except variables we need
 df <- df %>% select (-c(delegates0820,votes0820,delegates1546,votes1546))
 
-print(df)
+print(df) #we can show all data, since this is a small data set
 ```
 
-## Spend v Delegates
+&nbsp;
+&nbsp;
 
-```{r v_delegates, echo=FALSE,warning=FALSE,message=FALSE,results=FALSE}
+### Visulisation 1: Spend v Delegates
+
+```{r v_delegates}
 
 p <- ggplot(data = df, mapping = aes(x = spend, y=delegates,label = candidates))
 p + geom_point(color='red',size=3) +
@@ -37,17 +83,21 @@ p + geom_point(color='red',size=3) +
   geom_text_repel()
   xlim(0,750)
 
+#save output
 ggsave('delegates.png')    
   
 
 ```
 
-Safe to conclude there is no strong relationship
+It looks safe to conclude there is no strong relationship
 
-## Spend v Votes
+&nbsp;
+&nbsp;
+
+### Visualisation 2: Spend v Votes
 
 
-```{r v_votes, echo=FALSE,warning=FALSE,message=FALSE}
+```{r v_votes}
 
 
 p <- ggplot(data = df, mapping = aes(x = spend, y=votes, label=candidates))
@@ -56,23 +106,28 @@ p + geom_point(color='blue',size=3) +
   geom_text_repel() +
   scale_y_continuous(labels = scales::comma)
 
-  
+#save output
 ggsave('votes.png')  
 
 ```
 
 Again, it is safe to conclude there is no strong relationship
 
-## Price for votes
+&nbsp;
+&nbsp;
+
+### Visualisation 3: Price for votes
 
 Let's work out how much each candidate payed per vote/delegate (note, this makes the very dubious assumption that with 0 ad spend they would get 0 votes/delegates)
 
-```{r price_per, echo=FALSE,warning=FALSE,message=FALSE}
+```{r price_per, results=TRUE}
 
 df <- df %>% mutate(per_delegate=(spend*1000000)/delegates,per_vote=(spend*1000000)/votes) %>% drop_na()
 
 print(df)
+```
 
+```{r graph per}
 p <- ggplot(data=df,
             mapping=aes(x = per_vote,y=reorder(candidates,per_vote)))
 
@@ -84,7 +139,10 @@ ggsave('pervote.png')
 
 ```
 
-## Discussion
+&nbsp;
+&nbsp;
+
+### Summary, Discussion
 
 Enjoy discussion of this analysis around the twitter [thread here](https://twitter.com/tomstafford/status/1235136079226966016)
 
@@ -102,7 +160,10 @@ Caveat #6: [Maybe it was effective, since he overtook Biden in the polls at one 
 
 Caveat #7: Bloomberg's campaign stalled after disappointing debate performance, ["there's only so much advertising can do with a bad product"](https://twitter.com/mathewe/status/1235168728062529536)
 
-## Colophon
+&nbsp;
+&nbsp;
+
+### Colophon
 
 Normally I'd do this with Python, but I was inspired by Kieran Healy's book to use R. It's a great book:
 
